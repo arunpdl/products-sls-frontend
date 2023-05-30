@@ -58,3 +58,9 @@
 		height: auto;
 	}
 }
+
+@layer components {
+	.card {
+		@apply overflow-hidden rounded-lg bg-white shadow-lg transition ease-linear hover:scale-105;
+	}
+}

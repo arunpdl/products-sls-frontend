@@ -15,25 +15,27 @@ function Product({ product, handleDelete }: ProductProps) {
 	};
 
 	return (
-		<div className="overflow-hidden rounded-lg bg-white shadow-lg transition ease-linear hover:scale-105">
-			<img
-				src={product.imageUrl}
-				alt={product.name}
-				onError={handleImageError}
-				className="h-48 w-full object-cover"
-			/>
-			<div className="p-4">
-				<h3 className="text-lg font-bold text-gray-800">{product.name}</h3>
-				<p className="text-sm text-gray-600">{product.description}</p>
-				<div className="mt-4 flex items-center justify-between">
-					<span className="text-xl font-semibold text-gray-800">
-						{formatPrice(product.price)}
-					</span>
-					<TrashIcon
-						className="h-5 w-5 cursor-pointer text-danger transition ease-linear hover:scale-110"
-						onClick={() => handleDelete(product.id)}
-					/>
-				</div>
+		<div className="card flex flex-1 flex-col justify-between gap-2">
+			<div>
+				<img
+					src={product.imageUrl}
+					alt={product.name}
+					onError={handleImageError}
+					className="h-48 w-full object-cover"
+				/>
+				<h3 className="px-2 py-2 text-lg font-bold text-gray-800">
+					{product.name}
+				</h3>
+				<p className="px-2 text-sm text-gray-600">{product.description}</p>
+			</div>
+			<div className="flex justify-between px-2 py-2">
+				<span className="text-xl font-semibold text-gray-800">
+					{formatPrice(product.price)}
+				</span>
+				<TrashIcon
+					className="h-5 w-5 cursor-pointer text-danger transition ease-linear hover:scale-110"
+					onClick={() => handleDelete(product.id)}
+				/>
 			</div>
 		</div>
 	);

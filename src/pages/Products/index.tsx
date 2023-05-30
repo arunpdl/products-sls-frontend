@@ -4,6 +4,7 @@ import ContentLoader from '../../components/ContentLoader';
 import EmptyComponent from '../../components/EmptyComponent';
 import ConfirmationModal from '../../components/Modal/ConfirmationModal';
 import { useDeleteProduct, useProductList } from '../../hooks/useProducts';
+import { IProduct } from '../../types/interfaces';
 import Product from './Product';
 
 const Products = () => {
@@ -24,7 +25,7 @@ const Products = () => {
 		if (!selectedId) return;
 		deleteProduct(selectedId, {
 			onSuccess: () => {
-        toast.success("Product deleted successfully")
+				toast.success('Product deleted successfully');
 				refetch();
 				handleModalClose();
 			},
@@ -33,8 +34,6 @@ const Products = () => {
 			},
 		});
 	};
-
-  console.log("products", products)
 
 	const handleModalClose = () => {
 		setIsDeleteModalOpen(false);
@@ -47,7 +46,7 @@ const Products = () => {
 		<>
 			{products && products?.length > 0 ? (
 				<div className="mx-auto my-4 grid w-[90%] cursor-default grid-cols-1 gap-6 md:w-full md:grid-cols-3 md:gap-4">
-					{products?.map((product) => (
+					{products?.map((product: IProduct) => (
 						<Product
 							key={product.id}
 							product={product}
@@ -62,7 +61,7 @@ const Products = () => {
 				isOpen={isDeleteModalOpen}
 				handleClose={handleModalClose}
 				handleConfirm={handleDeleteConfirm}
-        isDeleting={isDeleting}
+				isDeleting={isDeleting}
 			/>
 		</>
 	);
